@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>LogBook - Lista de Desejos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d5e3ff",
+                        "primary-fixed": "#ffdad8",
+                        "on-secondary-fixed": "#001b3c",
+                        "on-surface-variant": "#5b403f",
+                        "tertiary-fixed-dim": "#98cdf2",
+                        "outline-variant": "#e4bebc",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#bb152c",
+                        "secondary-fixed-dim": "#b0c7f1",
+                        "on-tertiary-fixed": "#001e2e",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "surface": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#c7e7ff",
+                        "primary-container": "#db313f",
+                        "primary": "#b7102a",
+                        "inverse-primary": "#ffb3b1",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#bbd3fd",
+                        "on-primary-fixed": "#410007",
+                        "background": "#f9f9f9",
+                        "secondary": "#485f84",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary": "#286182",
+                        "surface-dim": "#dadada",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#064c6b",
+                        "inverse-surface": "#2f3131",
+                        "outline": "#8f6f6e",
+                        "on-tertiary-container": "#fcfcff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#447a9c",
+                        "surface-container": "#eeeeee",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-secondary-container": "#445a7f",
+                        "on-secondary-fixed-variant": "#30476a",
+                        "on-primary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#92001c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "container-max": "1280px",
+                        "xl": "80px",
+                        "margin-mobile": "16px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-sm": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "body-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-scale:active {
+            transform: scale(0.96);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased scroll-hide">
+<!-- Top AppBar (JSON Source of Truth Reference) -->
+<header class="fixed top-0 left-0 w-full h-16 bg-surface dark:bg-surface-dim border-b border-surface-variant dark:border-outline-variant z-50 flex items-center px-margin-mobile justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors active-scale">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-on-surface font-bold">Lista de Desejos</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary" data-icon="search">search</span>
+</button>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-margin-mobile max-w-md mx-auto">
+<!-- Filter/Summary Info -->
+<section class="mb-6 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-secondary">8 itens salvos</span>
+</div>
+<button class="flex items-center gap-1 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="sort">sort</span>
+                Filtrar
+            </button>
+</section>
+<!-- Scrollable List of Cards -->
+<div class="space-y-4">
+<!-- Item 1: Card with price drop -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 flex gap-4 relative overflow-hidden active-scale transition-all duration-200 shadow-[0px_2px_8px_rgba(0,0,0,0.02)]">
+<!-- Drop Badge -->
+<div class="absolute top-0 right-0 bg-primary text-on-primary px-3 py-1 rounded-bl-xl font-label-sm text-[10px] uppercase font-bold tracking-wider">
+                    Queda de Preço
+                </div>
+<div class="w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of a rare collectible card showing intricate dragon illustrations in vivid reds and golds. The card is encased in a professional protective sleeve, positioned against a clean, minimalist studio background with soft directional lighting that highlights the holographic texture of the foil. The aesthetic is clean, professional, and high-value." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF7QDewFy0IZMID3IB5qC-C8HGGyq23HaeD1Z8zz91MFkMbMQWy9K1oPU5pxuBp3d5ljjZhBS7Z77qiSusuK-l9C_wIDcqLmVCmhs3TTwJknWeQNozDJgvCvfXZJB6fpg6sa-fFVj6Vy8iQcWhSriARZ3oXdL2_bOSbIURLeiIzFQN5HtTyglC0v2oYDuVHGkhKX_IoO9SwcZ7_a8hKz4PS8HVln-HmHwshKnNfMp63QaspHPwZRaQj8f0xHBEW3bIojEfDLs9WA"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Dragão de Obsidiana Alpha</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Desejado: 2</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-primary font-bold uppercase">-32%</span>
+<span class="font-headline-md text-[18px] text-[#2D6A4F] font-bold">R$ 45,00</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] mb-1" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Normal Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 flex gap-4 relative overflow-hidden active-scale transition-all duration-200 shadow-[0px_2px_8px_rgba(0,0,0,0.02)]">
+<div class="w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A clean top-down shot of a trading card featuring a mythical forest landscape with lush greenery and mystical lighting. The image captures the vibrant emerald tones of the card art. The setting is a professional product photography studio with bright, neutral lighting that emphasizes the card's minimalist layout and premium print quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-ncTQv3ofmfrlsQY4-cPjNAWf2HIYy8gKMzP7avXiMmV8F0JN0XyxBG4g1hqDaBQjQSQKh2GW2twLFijneFlAiKhzANVX4Hstz1IKZeuVambzqd8Gc3cXMZE3S1dt-f7_ukCdgVZbA_YPirdRMR-7XVyMv9R9Z-rTKKe4HH9nWVhFPP6I7tNeaY9ejCrp2l0hAzpmbhiEf83BnFn6I-8X2Deddc7ZrAt_SXYV2xiATAKU2CXUu49VM-ucDuZUqoAAbDmgm159IQ"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Santuário do Bosque</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Desejado: 4</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="font-headline-md text-[18px] text-[#2D6A4F] font-bold">R$ 12,90</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] mb-1" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Price drop alert -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 flex gap-4 relative overflow-hidden active-scale transition-all duration-200 shadow-[0px_2px_8px_rgba(0,0,0,0.02)]">
+<div class="absolute top-0 right-0 bg-primary text-on-primary px-3 py-1 rounded-bl-xl font-label-sm text-[10px] uppercase font-bold tracking-wider">
+                    -40%
+                </div>
+<div class="w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A detailed digital artwork of a spell card showing a lightning storm in deep blues and electric purples. The card sits on a smooth white surface, reflecting the clean and energetic professionalism of the brand. The lighting is high-contrast, casting soft shadows that give the scene a three-dimensional depth within a minimal corporate frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZZhiJVDFJFCtZBh3_74RSygAULX3K0VTeE4N-fDIVvsiRXg-ZgwNap5NDr69GzyXkesXd-2aFDDy1n6hTtsroBUDvZEjIgBR-0PwjSmEvdc28M58SlbcwsNtF6O3PYT9uo39Z3fscnhQWHjihu8U4zPgztCOtJHHiBFW5uwLoFVxS9iiVzelYx5hktDmBQqCuAKBH9tFR1O73N8JMeEk8kCTVTrF2oznzVWq_ZHYXJ-XkW28T8g5WB-sGN7PJJ4VwgU0xLERodA"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Relâmpago Arcano (Foil)</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Desejado: 1</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-primary font-bold uppercase">Queda de Preço</span>
+<span class="font-headline-md text-[18px] text-[#2D6A4F] font-bold">R$ 89,00</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] mb-1" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Normal Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 flex gap-4 relative overflow-hidden active-scale transition-all duration-200 shadow-[0px_2px_8px_rgba(0,0,0,0.02)]">
+<div class="w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A collection of stylized trading cards with a minimalist clean white border. One card is centered, featuring a sleek, modern character design in a high-tech armor suit. The background is a sterile, bright grey, conveying a sense of reliability and momentum. Soft shadows are used to differentiate the card from the surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi-fowQgwGRlRYCAiitMlYDEHo8_vbl3x6ayESNvr5OuDeXYXjP9H4Rx-XUuaylw2pFgYDlSm52d4EgFf21oKawxDWqV0L4oyLuuP0HiwgBTtRwAdRRPI9Glla8gIPyCI-s9tYvY3pIaxBS7hmr_fpqEww_6jJPoUOu58I9QrpKE0Vxjcg0f33_UrEoBlYxsA0hFEy0ynYb_oiRSk48-tdndYrrHTajTVxrRqUUikCcSopGGAJf3OoG4lIQs_b5e0jjOmlbJgx6Q"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Sentinela Futurista</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Desejado: 3</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="font-headline-md text-[18px] text-[#2D6A4F] font-bold">R$ 22,50</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] mb-1" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+</div>
+</div>
+<!-- Item 5: Price drop alert -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 flex gap-4 relative overflow-hidden active-scale transition-all duration-200 shadow-[0px_2px_8px_rgba(0,0,0,0.02)]">
+<div class="absolute top-0 right-0 bg-primary text-on-primary px-3 py-1 rounded-bl-xl font-label-sm text-[10px] uppercase font-bold tracking-wider">
+                    -35%
+                </div>
+<div class="w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up of a tabletop card game piece with high-contrast sharp edges. The card depicts a fiery phoenix in vibrant shades of primary red and orange. The overall visual style is corporate and modern, emphasizing clarity and bold colors. The image is brightly lit, ensuring every detail of the clean geometric typography on the card is visible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBok5d32qVmpKb7m_3b5BZQoOitYsJ5GpSTX_yD_qvUekEng7x8RyWvGj5YxYO4qk1yTZR1LPD8AGCwTUFaQk38wcjQVkNtIluH7zq_HQOjVNWMFF4nfcId1nV4Njwm7smq5aabC26QdWSEmlQ6bFWWf962nfbbwrlnH27fZCJLv-0W2Z7wmA9ivf4squDEc_ueISYiJrpnTuvsmRSbabTBOT6HKGhnttLnRtPOwbhQktMuHvnGxzPCBfXe1SiKyWekM5TMIjz24Q"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Fênix da Alvorada</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Desejado: 2</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-primary font-bold uppercase">Queda de Preço</span>
+<span class="font-headline-md text-[18px] text-[#2D6A4F] font-bold">R$ 134,00</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] mb-1" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB: Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-lg flex items-center justify-center active-scale transition-all duration-200 z-50">
+<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (JSON Source of Truth Reference) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest dark:bg-surface-container-high shadow-[0px_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center px-4 py-2 pb-safe rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active-scale" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active-scale" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-sm text-label-sm">Livros</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active-scale" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm mt-1">Busca</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active-scale" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Perfil</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', (e) => {
+                // Potential feedback or navigation logic
+            });
+        });
+    </script>
+</body></html>

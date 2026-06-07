@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LogBook - Detalhes da Carta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#ffdad8",
+                      "tertiary-fixed-dim": "#98cdf2",
+                      "outline-variant": "#e4bebc",
+                      "on-tertiary-fixed-variant": "#064c6b",
+                      "inverse-primary": "#ffb3b1",
+                      "secondary-fixed": "#d5e3ff",
+                      "on-tertiary-fixed": "#001e2e",
+                      "secondary-container": "#bbd3fd",
+                      "surface": "#f9f9f9",
+                      "on-primary-fixed-variant": "#92001c",
+                      "outline": "#8f6f6e",
+                      "on-primary-fixed": "#410007",
+                      "on-surface-variant": "#5b403f",
+                      "on-tertiary-container": "#fcfcff",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "surface-tint": "#bb152c",
+                      "primary-container": "#db313f",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#1a1c1c",
+                      "tertiary-fixed": "#c7e7ff",
+                      "tertiary-container": "#447a9c",
+                      "surface-dim": "#dadada",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#30476a",
+                      "primary": "#b7102a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#445a7f",
+                      "tertiary": "#286182",
+                      "inverse-on-surface": "#f1f1f1",
+                      "surface-container": "#eeeeee",
+                      "secondary-fixed-dim": "#b0c7f1",
+                      "on-secondary-fixed": "#001b3c",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-variant": "#e2e2e2",
+                      "primary-fixed-dim": "#ffb3b1",
+                      "surface-bright": "#f9f9f9",
+                      "on-error": "#ffffff",
+                      "on-background": "#1a1c1c",
+                      "surface-container-low": "#f3f3f3",
+                      "secondary": "#485f84",
+                      "on-primary-container": "#fffbff",
+                      "error": "#ba1a1a",
+                      "background": "#f9f9f9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "xl": "80px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "lg": "48px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": ["Montserrat"],
+                      "label-md": ["Montserrat"],
+                      "label-sm": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "body-md": ["Montserrat"],
+                      "body-lg": ["Montserrat"],
+                      "display-lg": ["Montserrat"],
+                      "headline-lg": ["Montserrat"]
+              },
+              "fontSize": {
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Montserrat', sans-serif; }
+        .card-shimmer {
+            background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 200%;
+            animation: shimmer 4s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% -200%; }
+            100% { background-position: 200% 200%; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation Anchor -->
+<nav class="sticky top-0 z-50 bg-surface border-b border-surface-variant h-16 flex items-center px-margin-mobile">
+<button aria-label="Voltar" class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="ml-4">
+<h1 class="font-headline-md text-headline-md-mobile text-primary font-bold tracking-tight">LogBook</h1>
+</div>
+</nav>
+<!-- Content Canvas -->
+<main class="max-w-container-max mx-auto px-margin-mobile pb-32">
+<!-- Tab Navigation -->
+<div class="mt-md flex space-x-base border-b border-surface-variant overflow-x-auto scrollbar-hide">
+<button class="px-md py-sm font-label-md text-label-md text-primary border-b-2 border-primary whitespace-nowrap">Arte Alternativa</button>
+<button class="px-md py-sm font-label-md text-label-md text-secondary whitespace-nowrap hover:bg-surface-container-low transition-colors rounded-t-lg">Arte Normal</button>
+</div>
+<!-- Main Card Section -->
+<section class="mt-md flex flex-col md:flex-row md:gap-gutter items-start">
+<!-- Card Image Container -->
+<div class="w-full md:w-1/2 max-w-[400px] mx-auto md:mx-0 aspect-[2/3] relative rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(0,0,0,0.12)] border border-surface-variant group">
+<img alt="Monkey.D.Luffy Card Parallel Art" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A detailed digital illustration of a premium One Piece trading card featuring Monkey.D.Luffy in a dynamic combat pose. The background is filled with high-contrast comic-style action lines and vibrant textures. The image uses a palette of bold reds and deep navy blues, maintaining a high-impact professional aesthetic. The card surface has a subtle holographic sheen with intricate detailing and gold-leaf accents, reflecting a luxury collectible style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAs3qq3QcRQ0drqExpLlgU6lcbl6c0USOEYPSw0xPegLe9vfbLzkdUqcL3Bkiu32xZxWZxGnyMOc35Uzq-p5wyCAli18lVOvQcvpZxb2LzfOdlNv7v_Bk00n8RTewto7P7TWnEangunDmD-Q0dyFwOrasmuetmm4xeAEpp7_PnyFMVFDDcaMbGMwkcxFr3vmOFZq75uH1Yz7zVX-Kbbdi-yxwJHm_D1ZTE1kvKuByq8HQXf8BvwqppzDGNmND5BIFNQgnk033JrA"/>
+<div class="absolute inset-0 card-shimmer pointer-events-none opacity-30"></div>
+</div>
+<!-- Card Details & Pricing -->
+<div class="w-full md:w-1/2 mt-md md:mt-0 flex flex-col space-y-md">
+<!-- Identification -->
+<div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface font-extrabold tracking-tight">Monkey.D.Luffy</h2>
+<p class="font-label-md text-label-md text-secondary-fixed-dim bg-secondary-container px-3 py-1 inline-block rounded-lg mt-1">
+                        ST01-012 | Super Rare
+                    </p>
+</div>
+<!-- Price Section -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-sm">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 flex items-center">
+<span class="material-symbols-outlined mr-2 text-primary">trending_up</span>
+                        Preços de Mercado
+                    </h3>
+<div class="space-y-sm">
+<!-- Mínimo -->
+<div class="flex justify-between items-center py-sm border-b border-surface-container">
+<span class="font-body-md text-body-md text-on-surface">Mínimo</span>
+<span class="font-headline-md text-headline-md-mobile text-[#2D6A4F] font-bold">R$ 130,00</span>
+</div>
+<!-- Médio -->
+<div class="flex justify-between items-center py-sm border-b border-surface-container">
+<span class="font-body-md text-body-md text-on-surface">Médio</span>
+<span class="font-headline-md text-headline-md-mobile text-[#D4A017] font-bold">R$ 145,00</span>
+</div>
+<!-- Máximo -->
+<div class="flex justify-between items-center py-sm">
+<span class="font-body-md text-body-md text-on-surface">Máximo</span>
+<span class="font-headline-md text-headline-md-mobile text-primary font-bold">R$ 170,00</span>
+</div>
+</div>
+</div>
+<!-- Technical Details (Extra Section to add depth) -->
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low p-sm rounded-lg border border-surface-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Power</p>
+<p class="font-headline-md text-headline-md-mobile font-bold">12000</p>
+</div>
+<div class="bg-surface-container-low p-sm rounded-lg border border-surface-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Type</p>
+<p class="font-headline-md text-headline-md-mobile font-bold">Strike</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest p-margin-mobile border-t border-surface-variant flex flex-col items-center z-50">
+<a class="w-full max-w-[600px] bg-[#E63946] text-[#FFFFFF] py-4 rounded-lg flex items-center justify-center font-label-md text-label-md font-bold transition-all hover:opacity-90 active:scale-95 shadow-lg group" href="#">
+            Ver na Liga One Piece
+            <span class="material-symbols-outlined ml-2 text-base transition-transform group-hover:translate-x-1">open_in_new</span>
+</a>
+<div class="mt-2 h-1 w-32 bg-surface-variant rounded-full md:hidden"></div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+                setTimeout(() => button.classList.remove('scale-95'), 150);
+            });
+        });
+    </script>
+</body></html>

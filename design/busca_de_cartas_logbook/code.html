@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LogBook - Pesquisa de Cartas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#286182",
+                    "on-secondary-fixed": "#001b3c",
+                    "tertiary-fixed-dim": "#98cdf2",
+                    "primary-container": "#db313f",
+                    "on-tertiary-fixed": "#001e2e",
+                    "on-tertiary-container": "#fcfcff",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e2e2e2",
+                    "outline": "#8f6f6e",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#410007",
+                    "on-background": "#1a1c1c",
+                    "secondary-fixed-dim": "#b0c7f1",
+                    "primary-fixed": "#ffdad8",
+                    "on-primary-container": "#fffbff",
+                    "inverse-surface": "#2f3131",
+                    "inverse-primary": "#ffb3b1",
+                    "on-primary-fixed-variant": "#92001c",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#e8e8e8",
+                    "on-secondary-fixed-variant": "#30476a",
+                    "primary": "#b7102a",
+                    "tertiary-container": "#447a9c",
+                    "surface-dim": "#dadada",
+                    "primary-fixed-dim": "#ffb3b1",
+                    "on-surface-variant": "#5b403f",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-tint": "#bb152c",
+                    "inverse-on-surface": "#f1f1f1",
+                    "secondary-fixed": "#d5e3ff",
+                    "surface-variant": "#e2e2e2",
+                    "on-tertiary-fixed-variant": "#064c6b",
+                    "background": "#f9f9f9",
+                    "secondary-container": "#bbd3fd",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#e4bebc",
+                    "on-secondary-container": "#445a7f",
+                    "surface-bright": "#f9f9f9",
+                    "secondary": "#485f84",
+                    "tertiary-fixed": "#c7e7ff",
+                    "surface-container": "#eeeeee",
+                    "surface": "#f9f9f9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "xl": "80px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "body-lg": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "label-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        input[type=range]::-webkit-slider-runnable-track { background: #F5F5F5; height: 6px; border-radius: 999px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #E63946; margin-top: -7px; cursor: pointer; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-background">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/10 transition-colors">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tighter">LogBook</h1>
+</div>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/10 transition-colors">account_circle</button>
+</header>
+<main class="mt-16 px-margin-mobile pt-md">
+<!-- Search Bar -->
+<div class="relative w-full mb-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-tertiary-container transition-all font-body-md" placeholder="Nome da carta..." type="text"/>
+</div>
+<!-- Filter Chips Row: Colors -->
+<div class="flex overflow-x-auto hide-scrollbar gap-2 mb-md">
+<button class="px-5 py-2 rounded-full border border-primary bg-primary text-on-primary text-label-sm whitespace-nowrap">Todas</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">U</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">B</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">R</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">Y</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">G</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">P</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-label-sm whitespace-nowrap hover:bg-surface-variant/20 transition-all">Multi</button>
+</div>
+<!-- Expandable Filter Sections -->
+<div class="space-y-4 mb-lg">
+<!-- Price Range -->
+<details class="group bg-surface-container-lowest rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="font-label-md">Preço</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0">
+<div class="flex justify-between mb-4">
+<span class="text-label-sm text-on-surface-variant">R$ 0</span>
+<span class="text-label-md font-bold text-primary" id="price-display">R$ 500+</span>
+</div>
+<input class="w-full accent-primary" max="500" min="0" oninput="document.getElementById('price-display').innerText = 'R$ ' + (this.value == 500 ? '500+' : this.value)" type="range" value="500"/>
+</div>
+</details>
+<!-- Edição Dropdown -->
+<details class="group bg-surface-container-lowest rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="font-label-md">Edição</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0">
+<select class="w-full bg-surface-container-low border-none rounded-lg p-3 font-body-md text-on-surface focus:ring-primary-container">
+<option>Todas as Edições</option>
+<option>Romance Dawn [OP-01]</option>
+<option>Paramount War [OP-02]</option>
+<option>Pillars of Strength [OP-03]</option>
+<option>Kingdoms of Intrigue [OP-04]</option>
+<option>Awakening of the New Era [OP-05]</option>
+</select>
+</div>
+</details>
+<!-- Raridade Chips -->
+<details class="group bg-surface-container-lowest rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="font-label-md">Raridade</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant hover:bg-primary/10 transition-colors">Common</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant">Uncommon</button>
+<button class="px-4 py-1.5 rounded-full border border-primary text-primary text-label-sm font-bold">Rare</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant">Super Rare</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant">Secret Rare</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant">Promo</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant">Leader</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-label-sm text-on-surface-variant">Don!!</button>
+</div>
+</details>
+</div>
+<!-- Results Grid -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="flex flex-col gap-2 group animate-fade-in">
+<div class="aspect-[2.5/3.5] rounded-lg overflow-hidden bg-surface-container-high transition-transform duration-300 group-hover:scale-[1.02] shadow-sm">
+<img alt="TCG Card Illustration" class="w-full h-full object-cover" data-alt="A premium collectible trading card featuring a vibrant illustration of a heroic pirate captain with flowing red hair against a stormy ocean background. The card texture is matte with subtle holographic highlights on the edges. Minimalist studio lighting emphasizes the sharp colors of deep red, navy blue, and gold. High-end product photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNA9Wgac4fl9qSC4lcnoXebdLS7uTL5m3-fTvOjmqFR-LlxFvBLU_mKJ7UHiYTqeH4tFZpXFO0VQPyUXJ9jQxhoQfxjgFfflW4u5ikT5nCWhOqE2EsAenBGcc4An7NL33ye26GYze5mAgsqQZ8-goXFawuqO15BYEnPLzLIGSlWmKfywnZwlVX39GuWujIhqH79K8Dc_Io-Bfh-SMmfnw_oZyRqBlnlEK_zEBrBhddAGWn-PTNwmyQwr4_6TvzVgYXnnLARTpolg"/>
+</div>
+<div class="px-1">
+<h3 class="font-label-md text-on-surface truncate">Monkey.D.Luffy (Parallel)</h3>
+<p class="text-label-sm text-primary font-bold">R$ 145,00</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-2 group">
+<div class="aspect-[2.5/3.5] rounded-lg overflow-hidden bg-surface-container-high transition-transform duration-300 group-hover:scale-[1.02] shadow-sm">
+<img alt="TCG Card Illustration" class="w-full h-full object-cover" data-alt="A rare trading card displaying a majestic white dragon spiraling through a dark velvet sky filled with red nebulae. The card design is sleek and modern, emphasizing high contrast and sharp line work. The visual style is clean and corporate-minimalist, with a focus on powerful central composition and vibrant energy effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo5JdiSNw6deLTCXQ4aFayUr9vKeMbrvV4pu0aN7mXNGyQgtls5V1z5X7Nk1jzphto6XlCs8TMLWelbqoJ2zjf3dcLLeB11XruAh9YoGEYhD-C6iF_XHZnzVfWAmCwyYbkbgtQjxUlyiAoAwxnQcIPXddhMg3FZ2DJhIZ4LTdn2o28N-O54ngvsE_TwpCGpTVc4d93Eu45jutrRxPfv72ZTX46VfRRFGdVqwjh6lKDXWsJ418McLhLQ8BPLg8gScWTqRbyMJCFBQ"/>
+</div>
+<div class="px-1">
+<h3 class="font-label-md text-on-surface truncate">Roronoa Zoro (SR)</h3>
+<p class="text-label-sm text-primary font-bold">R$ 89,90</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-2 group">
+<div class="aspect-[2.5/3.5] rounded-lg overflow-hidden bg-surface-container-high transition-transform duration-300 group-hover:scale-[1.02] shadow-sm">
+<img alt="TCG Card Illustration" class="w-full h-full object-cover" data-alt="A collectible card featuring a powerful mythical warrior in ornate black and gold armor, standing before a portal of crimson fire. The lighting is dramatic and moody, reflecting a high-stakes competitive card game atmosphere. The background is a sterile, light-mode gray, making the vibrant red of the character pop intensely." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD43t5DJ2OrskaoX3RMAyG7zQviQZ4-cGfhIl0TS97cQFvDJhgiReDSuSFC5YW99MCDpTxpWp3qA5Muk6dAxyDInXdSfxKzGgphtSOm5ZOhfk3N2oolGdCFsFDQfstKKo3LbYIC1AijCaisircUgV1BXsNY3slRBWnEXvnjtWf9lWat3W-qZU-oQLBr3JwCwTT49_IafrA8h5CcobkRFcPjjZrtUf-mdCPRYS0G1oeTOBNTUAryvbdjGQVb_XmOBKPaEEYpVNUhBw"/>
+</div>
+<div class="px-1">
+<h3 class="font-label-md text-on-surface truncate">Portgas.D.Ace</h3>
+<p class="text-label-sm text-primary font-bold">R$ 210,00</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col gap-2 group">
+<div class="aspect-[2.5/3.5] rounded-lg overflow-hidden bg-surface-container-high transition-transform duration-300 group-hover:scale-[1.02] shadow-sm">
+<img alt="TCG Card Illustration" class="w-full h-full object-cover" data-alt="A minimalist trading card featuring an abstract representation of energy and movement, using sharp geometric shards in primary red and deep navy blue. The design is clean and professional, suited for a high-end card market application. The setting is bright and open, focusing on the sophisticated graphic design of the card face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4tSPEO9k9M86Utalhc9i_p8aTC380ZJKfoaeKDfWdB3xWCevOu03JEkGh8ejbAPYL_a5ngMmZkcg6nED0wV_Lhs0TqusjkQlnnCUQ-RikTCiPb2nzOYM25KnoYkW1EyDmHAnhWEs1Fw10ftRpcLtPfLy6hwkgE-q4SjudopOnJMCK_Xx8wBNM5HfV3OsIdO9GJxQBdsBMVGV3H3nEXxZjl6cXaZGylCB3ElWDKlt3_Zd-u2lcDsikRfOJZmaqtpVLTQ7mczI0RQ"/>
+</div>
+<div class="px-1">
+<h3 class="font-label-md text-on-surface truncate">Uta (Promo)</h3>
+<p class="text-label-sm text-primary font-bold">R$ 45,50</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface-container shadow-[0_-4px_12px_rgba(0,0,0,0.1)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary-container transition-all">
+<span class="material-symbols-outlined">style</span>
+<span class="text-label-bold font-label-bold mt-1">Coleção</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary-container transition-all">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-label-bold font-label-bold mt-1">Preços</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="text-label-bold font-label-bold mt-1">Mercado</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary-container transition-all">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-bold font-label-bold mt-1">Perfil</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('details').forEach((detail) => {
+            detail.addEventListener('toggle', () => {
+                if (detail.open) {
+                    document.querySelectorAll('details').forEach((other) => {
+                        if (other !== detail) other.removeAttribute('open');
+                    });
+                }
+            });
+        });
+
+        // Click interaction for chips
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.classList.contains('px-4')) { // Specifically rarity chips
+                    const isActive = this.classList.contains('border-primary');
+                    if(isActive) {
+                        this.classList.remove('border-primary', 'text-primary', 'font-bold');
+                        this.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                    } else {
+                        this.classList.add('border-primary', 'text-primary', 'font-bold');
+                        this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                    }
+                }
+            });
+        });
+    </script>
+</body></html>

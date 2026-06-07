@@ -1,0 +1,90 @@
+# ============================================================
+# SECURITY — NEVER COMMIT THESE
+# ============================================================
+serviceAccountKey.json
+google-services.json
+GoogleService-Info.plist
+*.env
+.env.*
+secrets/
+
+# ============================================================
+# Flutter / Dart
+# ============================================================
+**/flutter_app/.dart_tool/
+**/flutter_app/.flutter-plugins
+**/flutter_app/.flutter-plugins-dependencies
+**/flutter_app/.packages
+**/flutter_app/build/
+**/flutter_app/.pub-cache/
+**/flutter_app/.pub/
+**/flutter_app/pubspec.lock
+
+# Android
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+**/android/app/google-services.json
+**/android/**/GeneratedPluginRegistrant.java
+
+# iOS
+**/ios/.symlinks/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/Generated.xcconfig
+**/ios/Pods/
+**/ios/*.xcworkspace
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================================================
+# Firebase / Node.js (backend functions)
+# ============================================================
+**/functions/node_modules/
+**/functions/lib/
+**/functions/.runtimeconfig.json
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# ============================================================
+# IDEs & Editors
+# ============================================================
+.idea/
+.vscode/
+*.iml
+*.suo
+*.user
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# OS
+# ============================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

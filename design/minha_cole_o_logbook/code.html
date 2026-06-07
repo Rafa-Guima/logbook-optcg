@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LogBook - Minha Coleção</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E63946;
+            border-radius: 10px;
+        }
+        .active-interaction:active {
+            transform: scale(0.95);
+            opacity: 0.8;
+            transition: transform 0.1s ease;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#ffb3b1",
+                      "on-secondary-container": "#445a7f",
+                      "tertiary-container": "#447a9c",
+                      "surface-container": "#eeeeee",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#92001c",
+                      "on-secondary-fixed-variant": "#30476a",
+                      "on-primary-container": "#fffbff",
+                      "on-tertiary-container": "#fcfcff",
+                      "outline": "#8f6f6e",
+                      "surface-variant": "#e2e2e2",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#286182",
+                      "surface-dim": "#dadada",
+                      "surface-bright": "#f9f9f9",
+                      "on-tertiary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#064c6b",
+                      "inverse-surface": "#2f3131",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-surface": "#1a1c1c",
+                      "inverse-primary": "#ffb3b1",
+                      "primary": "#b7102a",
+                      "secondary": "#485f84",
+                      "secondary-container": "#bbd3fd",
+                      "on-primary-fixed": "#410007",
+                      "background": "#f9f9f9",
+                      "error": "#ba1a1a",
+                      "primary-container": "#db313f",
+                      "tertiary-fixed": "#c7e7ff",
+                      "surface-tint": "#bb152c",
+                      "secondary-fixed-dim": "#b0c7f1",
+                      "on-tertiary-fixed": "#001e2e",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e8e8e8",
+                      "surface": "#f9f9f9",
+                      "on-background": "#1a1c1c",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f3f3f3",
+                      "secondary-fixed": "#d5e3ff",
+                      "primary-fixed": "#ffdad8",
+                      "tertiary-fixed-dim": "#98cdf2",
+                      "outline-variant": "#e4bebc",
+                      "on-surface-variant": "#5b403f",
+                      "on-secondary-fixed": "#001b3c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "md": "24px",
+                      "xs": "4px",
+                      "sm": "12px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "xl": "80px",
+                      "margin-mobile": "16px",
+                      "lg": "48px"
+              },
+              "fontFamily": {
+                      "label-md": ["Montserrat"],
+                      "display-lg": ["Montserrat"],
+                      "label-sm": ["Montserrat"],
+                      "headline-lg": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "display-lg-mobile": ["Montserrat"],
+                      "body-lg": ["Montserrat"],
+                      "body-md": ["Montserrat"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar Shell -->
+<header class="sticky top-0 z-50 bg-surface border-b border-surface-variant flex items-center justify-between px-margin-mobile w-full h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary active-interaction cursor-pointer">menu</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary font-bold tracking-tight">LogBook</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary active-interaction cursor-pointer" onclick="toggleSearch()">search</span>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-margin-mobile pb-24 custom-scrollbar">
+<!-- User Profile Header Section -->
+<section class="mt-sm mb-md">
+<div class="flex flex-col items-center">
+<div class="relative w-24 h-24 rounded-full border-4 border-white shadow-sm overflow-hidden mb-sm">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a young person wearing a stylish nautical hat, posing confidently in a high-key studio setting. The lighting is bright and modern, creating a clean white-mode aesthetic. Minimalist red accents are subtly visible in the background props. The photography style is sharp, professional, and contemporary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaYg50hrw0EwqbherERjCXD92Iw_e80rPupNzeR1FkaVyqMnVIMxTMcGhS0IEk9gHOP6Ba_OXokBwP5vZRGf45AIy5Gg-0CLg1_DMW-r_5C1sDH3d2ydFBXFpc6ba9gqWti7A_KhgNRbJgm9Sb9nGWZjU-BdFNfTiK87TLGeAQmCjHnYRtO3wQ_NNrK2CRuKkKikDk-H_SFJ1s2wghlDkVtEjdvBh2l4GYF-oNPu3X2Vljta4Q1rItDjZ2LxRAmNkXlalR4rfkdg"/>
+</div>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface font-bold">Pirata LogBook</h2>
+<div class="flex gap-4 mt-xs">
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md text-primary">47</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">cartas</span>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md text-primary">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">edições</span>
+</div>
+</div>
+<!-- Visibility Toggle -->
+<div class="mt-md flex items-center bg-surface-container-low rounded-full p-1 w-full max-w-xs cursor-pointer select-none" onclick="toggleVisibility()">
+<div class="flex-1 py-2 text-center rounded-full font-label-md text-label-md text-on-surface-variant transition-all" id="private-tab">Privada</div>
+<div class="flex-1 py-2 text-center rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container shadow-sm transition-all" id="public-tab">Pública</div>
+</div>
+</div>
+</section>
+<!-- Search Friend Section -->
+<section class="mb-lg">
+<button class="w-full bg-surface-container-lowest border border-outline-variant py-3 px-4 rounded-lg flex items-center justify-between active-interaction transition-all" onclick="toggleFriendSearch()">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_search</span>
+<span class="font-label-md text-label-md text-on-surface">Buscar Coleção de Amigo</span>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform" id="friend-arrow">expand_more</span>
+</button>
+<div class="hidden mt-xs" id="friend-search-input">
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-tertiary focus:bg-white rounded-lg px-4 py-3 font-body-md text-body-md outline-none transition-all shadow-sm" placeholder="Digite o nickname..." type="text"/>
+<button class="absolute right-2 bg-primary text-white p-2 rounded-lg flex items-center justify-center active-interaction">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Search Local (Hidden by default) -->
+<div class="hidden mb-md" id="local-search-container">
+<div class="flex items-center gap-2 bg-surface-container-high p-1 rounded-lg">
+<span class="material-symbols-outlined ml-2 text-on-surface-variant">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md p-2" placeholder="Pesquisar na minha coleção..." type="text"/>
+<button class="material-symbols-outlined p-2 text-on-surface-variant" onclick="toggleSearch()">close</button>
+</div>
+</div>
+<!-- Collection Grid -->
+<div class="grid grid-cols-2 gap-sm">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-2 flex flex-col gap-xs active-interaction">
+<div class="relative aspect-[3/4] rounded-md overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of a rare trading card with vibrant illustrative artwork depicting a mythical dragon breathing fire. The card is set against a clean, clinical white studio background. The color scheme is dominated by brilliant reds and oranges, contrasting with high-key lighting. The overall feel is modern, collectible, and high-value." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDABf5Xv_qeUvGejU20zq8-pOIml87bpstPJMIHWLSHRHLZ2bPqTEfh1dLe-Hp9Koa020OxqQ8rNBQV4DqMzESfJ7Xjzt_1JT5DH4MKhvCwR_sIyNdXuwe0h3C3rR2kLBCvpRW6bZumDnzewxKIYeq_pAKUJeSiczbmKeJHIo_MiF0hMue1y--kAB0xjG-VdUJuwz190JSjbYfmhBh4KjTs_hD5SU9GEPf4RdmxtpJYa4SG56LEsRYTB_mENAQVEDbJ4phy3Pb-Lw"/>
+<div class="absolute bottom-1 right-1 bg-primary text-white font-label-sm text-label-sm px-2 py-0.5 rounded-full shadow-md">x3</div>
+</div>
+<div class="px-1">
+<p class="font-label-md text-label-md text-on-surface truncate">Dragão Imperial</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Edição Alpha</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-2 flex flex-col gap-xs active-interaction">
+<div class="relative aspect-[3/4] rounded-md overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A detailed macro close-up of a holographic trading card featuring a celestial wizard character casting a blue energy spell. The card is displayed on a pure white surface under soft, diffuse lighting. Accents of vibrant red from the card's framing stand out. The image conveys a clean, minimalist, and luxury gaming aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP3EvJZ0kfAqSYAIT85ARxX_k-UY5kX3uFO0k7YWaRZKKIkHmHyObTGsCwSDtr978P_PCL-O1Wyoudz_BA049gdylPGf4Lg1Tw6m2r-xz0h3HED-N2Yg_BcluwndcKja2Unvi-e3UukHbigGZYt8W5RfhGKXxhQu7TXRcV5tam0NknBFPcpc0WNSH-qSsjUE3-TMsISGWPWicJYd7cgpzfyeei3yQKCUplfpcO2lKJqT9IbNJKEYpg45-0lGwLuRJnu87qlg5QOQ"/>
+<div class="absolute bottom-1 right-1 bg-primary text-white font-label-sm text-label-sm px-2 py-0.5 rounded-full shadow-md">x1</div>
+</div>
+<div class="px-1">
+<p class="font-label-md text-label-md text-on-surface truncate">Mago Celestial</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Portal Vazio</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-2 flex flex-col gap-xs active-interaction">
+<div class="relative aspect-[3/4] rounded-md overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a collectible trading card featuring a high-tech robotic warrior in an action pose. The card art is vibrant and detailed, presented on a minimalist white backdrop with clinical studio lighting. Primary red highlights on the card border pop against the neutral background. The mood is energetic and professionally curated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIIS4_8DA-ixRzJTLlwXYKRPr-AGaOttoLSYgxsTOz9f0i3ahuH9gTl10YUW58dKM5qCBjK6Ib3iKCu2L4e94QkSAzqWIuQbTQqU7SE7hIeBA2CbPd7djjjZunZwi3grqJjmU05rPLR2jpyjMiEWaf5JNkiiBcVgFtIYovwoTYowwwMX4yOJecn31LoFcp5rhJsmJ0VDOwSdn_7hbtEg80Hx8NTazuJYbzfBnLy_-5E4DVkTW_KcaByJPckAXUfOm4J9Tq9WMe-g"/>
+<div class="absolute bottom-1 right-1 bg-primary text-white font-label-sm text-label-sm px-2 py-0.5 rounded-full shadow-md">x4</div>
+</div>
+<div class="px-1">
+<p class="font-label-md text-label-md text-on-surface truncate">Sentinela Titã</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Iron Age</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-2 flex flex-col gap-xs active-interaction">
+<div class="relative aspect-[3/4] rounded-md overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A stylized macro image of a fantasy trading card showing a mystical forest nymph. The card's artwork is lush with greens and accented by deep red floral details. It is positioned in the center of a bright, white-mode minimalist frame. The lighting is soft and consistent, emphasizing a clean and high-end collector aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4ohTgsMqolfxxI52-ubrJ8v9KOF5KHGVH-0rc5OJKF781a3j-fBusZzOfpFz8yfrzlp4yMJpDi9UwXar6B-I46a03pPhyBtdPGoOGvgVX93ubauoAx_CSycSIQFB2T18Q-ZEgE2mXTzHfyf4Q7mCxBm8a5Qe2Reb0bMLGhaAHGwZrBDWmZi00GiVvWktwxfvMmjV1rSnf53-iRK7YLBmF5RsJiL34L5svAXXrsaKUkOj0Z6O5t7LJVBCmrl-hAru-u-IfdEijlA"/>
+<div class="absolute bottom-1 right-1 bg-primary text-white font-label-sm text-label-sm px-2 py-0.5 rounded-full shadow-md">x2</div>
+</div>
+<div class="px-1">
+<p class="font-label-md text-label-md text-on-surface truncate">Ninfas da Floresta</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Gênesis</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest shadow-[0px_-2px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 active-interaction">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Início</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 active-interaction">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm">Livros</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 active-interaction">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Busca</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active-interaction">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</div>
+</nav>
+<script>
+        function toggleVisibility() {
+            const privateTab = document.getElementById('private-tab');
+            const publicTab = document.getElementById('public-tab');
+            
+            if (publicTab.classList.contains('bg-primary-container')) {
+                // To Private
+                publicTab.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                publicTab.classList.add('text-on-surface-variant');
+                privateTab.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                privateTab.classList.remove('text-on-surface-variant');
+            } else {
+                // To Public
+                privateTab.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                privateTab.classList.add('text-on-surface-variant');
+                publicTab.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                publicTab.classList.remove('text-on-surface-variant');
+            }
+        }
+
+        function toggleFriendSearch() {
+            const input = document.getElementById('friend-search-input');
+            const arrow = document.getElementById('friend-arrow');
+            input.classList.toggle('hidden');
+            arrow.style.transform = input.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        function toggleSearch() {
+            const container = document.getElementById('local-search-container');
+            container.classList.toggle('hidden');
+        }
+    </script>
+</body></html>

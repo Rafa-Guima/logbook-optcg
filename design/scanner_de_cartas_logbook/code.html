@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanner-frame-glow {
+            box-shadow: 0 0 20px rgba(183, 16, 42, 0.4), inset 0 0 15px rgba(183, 16, 42, 0.2);
+        }
+        .viewfinder-blur {
+            backdrop-filter: blur(4px);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#410007",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-tertiary-container": "#fcfcff",
+                        "secondary-container": "#bbd3fd",
+                        "primary-container": "#db313f",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "tertiary-fixed-dim": "#98cdf2",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#447a9c",
+                        "on-primary-fixed-variant": "#92001c",
+                        "surface": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#064c6b",
+                        "surface-dim": "#dadada",
+                        "primary-fixed": "#ffdad8",
+                        "on-tertiary-fixed": "#001e2e",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-tint": "#bb152c",
+                        "secondary-fixed-dim": "#b0c7f1",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed": "#001b3c",
+                        "on-primary-container": "#fffbff",
+                        "inverse-surface": "#2f3131",
+                        "on-secondary-container": "#445a7f",
+                        "on-secondary-fixed-variant": "#30476a",
+                        "secondary-fixed": "#d5e3ff",
+                        "tertiary": "#286182",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-primary": "#ffb3b1",
+                        "on-surface": "#1a1c1c",
+                        "outline": "#8f6f6e",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "primary": "#b7102a",
+                        "outline-variant": "#e4bebc",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f3f3",
+                        "tertiary-fixed": "#c7e7ff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#485f84",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#5b403f",
+                        "background": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "label-sm": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-md": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "body-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-on-surface font-body-md overflow-hidden antialiased">
+<!-- Camera Viewfinder Background -->
+<div class="fixed inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60 scale-110 filter blur-sm" data-alt="A first-person perspective of a professional trading card game setup on a wooden table, featuring colorful One Piece themed cards. The scene is artistically blurred to simulate a camera's depth of field, with soft natural lighting coming from the side. The overall aesthetic is clean and modern, focusing on the vibrant colors of the card art while maintaining a professional, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCurMbnexKVdvqGpC3sUK2uae9aoJzlacHEczXRVKFOk8ETBhKCWH5Iyhv2MFfTiAPCvBhM1MHt7ZRM1eWkC4hyT-rVlfg8VrIg5XPx-IpKuXzXxgv-AmnEjDhuSnPZ-xBRckdw7HCU295mqYqeu7ozH9JnhhxAjAlWJflwThX9eOmQWvBxWFgS4WvmERQJfO5MReGDTlUwP-XJRGev6lNYKCXorAc2suY2k4aOIPCnEmqfbTYj5f-i5ruLVApqRRSpYRAAJd-Pag"/>
+<div class="absolute inset-0 bg-black/30"></div>
+</div>
+<!-- UI Overlay Layer -->
+<div class="relative z-10 flex flex-col h-screen">
+<!-- Top App Bar -->
+<header class="flex items-center px-margin-mobile h-16 w-full mt-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1"></div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md">
+<span class="material-symbols-outlined">flash_on</span>
+</button>
+</header>
+<!-- Instructions -->
+<div class="flex flex-col items-center justify-center pt-8 px-8">
+<p class="font-headline-md text-headline-md-mobile text-white text-center drop-shadow-lg tracking-wide">
+                Aponte para a carta ou insira o código
+            </p>
+</div>
+<!-- Main Scanner Frame Area -->
+<main class="flex-1 flex flex-col items-center justify-center relative px-8">
+<!-- The Card Frame -->
+<div class="relative w-full max-w-[280px] aspect-[2.5/3.5] border-2 border-primary rounded-xl scanner-frame-glow overflow-hidden">
+<!-- Decorative Corners -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-white rounded-tl-lg m-[-2px]"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-white rounded-tr-lg m-[-2px]"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-white rounded-bl-lg m-[-2px]"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-white rounded-br-lg m-[-2px]"></div>
+<!-- Scanning Line Animation -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-[bounce_3s_infinite] opacity-80 blur-[2px]"></div>
+<div class="absolute inset-0 shimmer opacity-20"></div>
+</div>
+<p class="mt-8 font-label-md text-white/60 bg-black/20 px-4 py-2 rounded-full backdrop-blur-sm">
+                Posicione a carta dentro do quadro
+            </p>
+</main>
+<!-- Bottom Mode Toggle Bar -->
+<nav class="fixed bottom-0 left-0 w-full p-6 pb-10">
+<div class="max-w-md mx-auto bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl flex p-1.5 shadow-2xl">
+<!-- Camera Mode Tab (Active) -->
+<button class="flex-1 flex flex-col items-center justify-center gap-1 py-3 px-2 bg-primary text-white rounded-xl active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-weight="fill">camera</span>
+<span class="font-label-sm text-label-sm">Reconhecer pela câmera</span>
+</button>
+<!-- Code Mode Tab (Inactive) -->
+<button class="flex-1 flex flex-col items-center justify-center gap-1 py-3 px-2 text-white/60 hover:text-white/80 active:scale-95 transition-all">
+<span class="material-symbols-outlined">barcode_scanner</span>
+<span class="font-label-sm text-label-sm">Buscar por código</span>
+</button>
+</div>
+</nav>
+</div>
+<!-- Micro-interaction for feedback -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = btn.getBoundingClientRect();
+                const circle = document.createElement('div');
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                circle.style.position = 'absolute';
+                circle.style.width = '20px';
+                circle.style.height = '20px';
+                circle.style.borderRadius = '50%';
+                circle.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                circle.style.left = x + 'px';
+                circle.style.top = y + 'px';
+                circle.style.transform = 'translate(-50%, -50%) scale(0)';
+                circle.style.transition = 'transform 0.4s ease-out, opacity 0.4s ease-out';
+                circle.style.pointerEvents = 'none';
+                
+                btn.style.position = 'relative';
+                btn.style.overflow = 'hidden';
+                btn.appendChild(circle);
+                
+                requestAnimationFrame(() => {
+                    circle.style.transform = 'translate(-50%, -50%) scale(5)';
+                    circle.style.opacity = '0';
+                });
+                
+                setTimeout(() => {
+                    circle.remove();
+                }, 400);
+            });
+        });
+    </script>
+</body></html>
