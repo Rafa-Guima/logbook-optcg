@@ -2,6 +2,7 @@
 # SECURITY — NEVER COMMIT THESE
 # ============================================================
 serviceAccountKey.json
+scraper_script/serviceAccountKey.json
 google-services.json
 GoogleService-Info.plist
 *.env
