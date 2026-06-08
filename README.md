@@ -143,8 +143,8 @@ python update_cards.py
 This is an MVP. The following features are partially implemented or pending:
 
 - **Scanner accuracy** — The ORB-based scanner was validated with a single card under controlled lighting. Performance may vary with different angles, lighting conditions, or card conditions.
-- **League integration** — Direct integration with the One Piece TCG official league ranking system is not yet implemented.
-- **Prices** — Current prices are placeholder values generated for development purposes. Real-time market pricing is a planned feature.
+- **Liga One Piece integration** — Integration with [Liga One Piece](https://www.ligaonepiece.com.br) — the leading TCG marketplace ecosystem in Brazil — is not yet implemented. This would bring real market prices, direct purchase links, auction participation, and more.
+- **Prices** — Current prices are placeholder values generated for development purposes, since real pricing depends on the Liga One Piece integration.
 - **Card database coverage** — The scraper currently targets a single set series from Bandai's official site.
 
 ---
@@ -152,8 +152,8 @@ This is an MVP. The following features are partially implemented or pending:
 ## 🗺️ Roadmap
 
 - [ ] Improve scanner accuracy with a larger reference dataset
-- [ ] Integrate with One Piece TCG official league API
-- [ ] Replace placeholder prices with real-time market data
+- [ ] Integrate with [Liga One Piece](https://www.ligaonepiece.com.br) — real market prices, buy/sell links, and auction support
+- [ ] Replace placeholder prices with real-time market data from Liga One Piece
 - [ ] Add deck builder feature
 - [ ] iOS support
 
@@ -306,8 +306,8 @@ python update_cards.py
 Este é um MVP. As seguintes funcionalidades estão parcialmente implementadas ou pendentes:
 
 - **Precisão do scanner** — O scanner baseado em ORB foi validado com uma única carta em condições controladas de iluminação. A performance pode variar com diferentes ângulos, iluminação ou estado das cartas.
-- **Integração com a liga** — A integração direta com o sistema de ranking oficial da liga do One Piece TCG ainda não foi implementada.
-- **Preços** — Os preços atuais são valores fictícios gerados para fins de desenvolvimento. Precificação em tempo real é uma funcionalidade planejada.
+- **Integração com a Liga One Piece** — A integração com a [Liga One Piece](https://www.ligaonepiece.com.br) — principal ecossistema de mercado de TCG no Brasil — ainda não foi implementada. Ela traria preços reais de mercado, links diretos para compra de cartas, participação em leilões e outras funcionalidades do ecossistema (Liga Pokémon, Riftbound, entre outros).
+- **Preços** — Os preços atuais são valores fictícios gerados para fins de desenvolvimento, já que a precificação real depende da integração com a Liga One Piece.
 - **Cobertura do banco de cartas** — O scraper atualmente cobre apenas uma série de sets do site oficial da Bandai.
 
 ---
@@ -315,8 +315,8 @@ Este é um MVP. As seguintes funcionalidades estão parcialmente implementadas o
 ## 🗺️ Roadmap
 
 - [ ] Melhorar precisão do scanner com base de referência maior
-- [ ] Integrar com a API oficial da liga do One Piece TCG
-- [ ] Substituir preços fictícios por dados de mercado em tempo real
+- [ ] Integrar com a [Liga One Piece](https://www.ligaonepiece.com.br) — preços reais de mercado, links de compra/venda e suporte a leilões
+- [ ] Substituir preços fictícios por dados reais de mercado via Liga One Piece
 - [ ] Adicionar funcionalidade de deck builder
 - [ ] Suporte a iOS
 
